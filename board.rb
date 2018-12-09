@@ -17,6 +17,52 @@ class Board
     end
   end
   
+  def move_piece(start_pos, end_pos, piece)
+    set_piece(end_pos[0], end_pos[1], piece)
+    remove_piece(start_pos[0], start_pos[1])
+  end
+  
+  def set_piece(x,y,piece)
+    raise 'invalid move' unless empty_position?(x,y) && in_range?(x,y)
+    self.grid[y][x] = piece
+  end
+  
+  def remove_piece(x,y)
+    self.grid[y][x] = nil
+  end
+  
+  # prob should not set to empty
+  def return_piece(x,y)
+    piece = @grid[y][x]
+    piece ? piece : :empty
+  end
+  
+  def empty_position?(x,y)
+    return_piece(x,y) == :empty  
+  end
+  
+  def in_range?(x,y)
+    [x,y].all? {|coordinate| (0..SIZE-1).include?(coordinate)}
+  end
+  
+  def empty_spaces
+    find_element_by_class(NilClass)
+  end
+  
+  def full_spaces
+    find_element_by_class(Piece)
+  end
+  
+  def find_element_by_class(klass)
+    empty_spaces = []
+    @grid.each_with_index do |row, row_idx|
+      row.each_with_index do |col, col_idx|
+        empty_spaces << [row_idx, col_idx] if col.class == klass
+      end
+    end
+    empty_spaces
+  end
+  
   private
   
   def setup_row(row, odd_row, color)
