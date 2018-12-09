@@ -24,11 +24,11 @@ class Board
   
   def set_piece(x,y,piece)
     raise 'invalid move' unless empty_position?(x,y) && in_range?(x,y)
-    self.grid[y][x] = piece
+    @grid[y][x] = piece
   end
   
   def remove_piece(x,y)
-    self.grid[y][x] = nil
+    @grid[y][x] = nil
   end
   
   # prob should not set to empty
@@ -46,14 +46,14 @@ class Board
   end
   
   def empty_spaces
-    find_element_by_class(NilClass)
+    find_element_coordinates_by_class(NilClass)
   end
   
   def full_spaces
-    find_element_by_class(Piece)
+    find_element_coordinates_by_class(Piece)
   end
   
-  def find_element_by_class(klass)
+  def find_element_coordinates_by_class(klass)
     empty_spaces = []
     @grid.each_with_index do |row, row_idx|
       row.each_with_index do |col, col_idx|
