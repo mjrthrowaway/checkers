@@ -1,0 +1,26 @@
+
+# Checkers 
+
+# Questions
+  * Would this be built out in the future to maybe power other games.
+  * Would there be any AI that we would need to build
+  * How will users interact with this game
+- Classes
+  - Piece
+    - Base class which has common functions between all pieces.
+    - Broken down between black and black
+    - Only responsible for knowing if it is killed. Would not have    responsibility over movement. In this case the board would have to track all of this. 
+    - Could have just a Piece class that knows where it is on the board and the color of the piece.
+  - CheckersPiece << Piece
+    - This class would be able to tell you legal moves according to the checkers rules
+    - Would know of their possible moves but not actually execute the moves (maybe)
+  - Game or Board
+    - God class holding the majority of the responsibility
+    - When the CheckersPiece has access to the board they would be able to know a list of possible moves
+  - Moves
+  - DisplayBoard
+
+
+# General
+  - Board class that has information about what pieces are where
+  - Piece class knows all of its legal moves based on an empty grid and then would check with the Board class before making the move to ensure it is valid.
