@@ -1,9 +1,9 @@
 require_relative 'board'
 require 'pry'
 
-RSpec.describe Board do
+RSpec.describe Engine::Board do
   before do
-    @board = Board.new
+    @board = Engine::Board.new
     @board.setup_board
   end
   
@@ -12,8 +12,8 @@ RSpec.describe Board do
   end
   
   it "should fail if board is not 8x8" do
-    stub_const('Board::SIZE', 9)
-    @board = Board.new
+    stub_const('Engine::Board::SIZE', 9)
+    @board = Engine::Board.new
     expect(correct_dimensions?(@board.grid, 8, 8)).to eq (false)
   end
   
@@ -133,13 +133,13 @@ RSpec.describe Board do
   end
 
   it "should set a piece if space is empty" do
-    piece = Piece.new(:white)
+    piece = Engine::Piece.new(:white)
     @board.set_piece(2,2, piece)
     expect(@board.return_piece(2,2).color).to eq(:white)
   end
   
   it "should return error if trying to set piece where space is not empty" do
-    piece = Piece.new(:white)
+    piece = Engine::Piece.new(:white)
     expect{@board.set_piece(3,2,piece)}.to raise_error(RuntimeError)
   end
   

@@ -2,9 +2,9 @@
 # Checkers 
 
 # Questions
-  * Would this be built out in the future to maybe power other games.
+  * Would this be built out in the future to maybe power other Engine::Games.
   * Would there be any AI that we would need to build
-  * How will users interact with this game
+  * How will users interact with this Engine::Game
 - Classes
   - Piece
     - Base class which has common functions between all pieces.
@@ -14,7 +14,7 @@
   - CheckersPiece << Piece
     - This class would be able to tell you legal moves according to the checkers rules
     - Would know of their possible moves but not actually execute the moves (maybe)
-  - Game or Board
+  - Engine::Game or Board
     - God class holding the majority of the responsibility
     - When the CheckersPiece has access to the board they would be able to know a list of possible moves
   - Moves

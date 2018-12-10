@@ -1,9 +1,9 @@
 require_relative 'piece'
 
-RSpec.describe Piece do
+RSpec.describe Engine::Piece do
   before do
     color = :black
-    @piece = Piece.new(color)
+    @piece = Engine::Piece.new(color)
   end
   
   it "should respond to color" do

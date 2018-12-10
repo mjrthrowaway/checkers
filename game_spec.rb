@@ -2,9 +2,9 @@ require_relative 'game'
 require_relative 'board'
 require_relative 'piece'
 
-RSpec.describe Game do
+RSpec.describe Engine::Game do
   before do
-    @game =  Game.new
+    @game =  Engine::Game.new
   end
   
   it "instantiates a new game" do
