@@ -15,11 +15,20 @@ class Game
     @finished
   end
   
-  def validate_move?(from, to)
+  def play_turn(from, to)
+    perform_move(from,to)
+  end
+  
+  def next_turn
+    @turn == :white ? :black : :white
+  end
+  
+  def validate_pawn_move?(from, to)
     valid_move = true
     return valid_move = false unless from_piece_belongs_to_current_player(from)
-    return valid_move = false unless(move_forward_within_one_row?(from, to))
-    return valid_move = false unless(move_within_one_column?(from, to))
+    return valid_move = false unless move_forward_within_one_row?(from, to)
+    return valid_move = false unless move_within_one_column?(from, to)
+    return valid_move = false unless diagonal_move(from, to)
     valid_move
   end
   
@@ -43,6 +52,6 @@ class Game
   end
   
   def diagonal_move(from, to)
-    from[x] != to[x]
+    from[1] != to[1] && from[0] != to[0]
   end
 end
